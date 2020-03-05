@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Details></Details>
-    <List></List>
+    <Details v-bind="selectedUser" />
+    <List :users="users" :groups="groups" />
   </div>
 </template>
 
@@ -14,7 +14,43 @@ export default {
     List
   },
   data() {
-    return {}
+    return {
+      groups: ['Administrative', 'Student', 'Teacher'],
+      selectedUser: {
+        index: 0,
+        selected: false,
+        name: 'Levhita',
+        group: 'Administrative',
+        thumbnail:
+          'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+      },
+      users: [
+        {
+          index: 0,
+          selected: false,
+          name: 'Levhita',
+          group: 'Administrative',
+          thumbnail:
+            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+        },
+        {
+          index: 1,
+          selected: false,
+          name: 'Anais',
+          group: 'Administrative',
+          thumbnail:
+            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+        },
+        {
+          index: 2,
+          selected: false,
+          name: 'Rocio',
+          group: 'Student',
+          thumbnail:
+            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+        }
+      ]
+    }
   }
 }
 </script>

@@ -12,9 +12,11 @@ export default {
     thumbnail: String,
     selected: Boolean
   }
+
   /** shortcut, no validation:
    * props:['index', 'name', 'thumbnail', 'selected']
    * **/
+
   /** expanded, defaults and required fields
    *  props: {
    *    index: {

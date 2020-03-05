@@ -23,13 +23,14 @@
 
 <script>
 export default {
-  data() {
-    return {
-      name: 'levhita',
-      group: 'Administrator',
-      bio: 'Free Software Advocate',
-      profession: 'Developer'
-    }
+  props: {
+    picture: Object,
+    name: String,
+    group: String,
+    bio: String,
+    profession: String,
+    email: String,
+    phone: String
   }
 }
 </script>
