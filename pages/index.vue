@@ -21,6 +21,14 @@ export default {
         selected: false,
         name: 'Levhita',
         group: 'Administrative',
+        bio: 'Web developer a free software advocate',
+        picture: {
+          large:
+            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_400x400.jpg'
+        },
+        profession: 'Developer',
+        email: 'levhita@gmail.com',
+        phone: '33-1139-38-63',
         thumbnail:
           'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
       },

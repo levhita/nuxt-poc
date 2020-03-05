@@ -1,8 +1,8 @@
 <template>
   <section class="details-container">
     <div class="intro">
-      <!-- <div class="back" :style="{ backgroundImage: `url(${picture.large})` }" /> -->
-      <!-- <img class="detail" :src="picture.large" /> -->
+      <div class="back" :style="{ backgroundImage: `url(${picture.large})` }" />
+      <img class="detail" :src="picture.large" />
       <h1>{{ name }}</h1>
       <p>{{ group }}</p>
     </div>
@@ -46,7 +46,7 @@ export default {
 
 div.intro {
   text-align: center;
-  color: white;
+  color: gray;
   padding: 0;
   height: 300px;
   overflow: hidden;
@@ -72,7 +72,7 @@ div.back {
 }
 
 img.detail {
-  border: 4px solid white;
+  border: 4px solid gray;
   border-radius: 50%;
   margin-top: 40px;
   margin-bottom: 20px;
