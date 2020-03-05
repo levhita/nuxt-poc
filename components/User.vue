@@ -1,26 +1,32 @@
 <template>
   <div>
-    <button :class="isSelectedClass">
-      <img :src="thumbnail" /> {{ name }}
-    </button>
+    <button :class="{ selected }"><img :src="thumbnail" /> {{ name }}</button>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      name: 'levhita',
-      thumbnail:
-        'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg',
-      selected: true
-    }
-  },
-  computed: {
-    isSelectedClass() {
-      return this.selected || 'selected'
-    }
+  props: {
+    index: Number,
+    name: String,
+    thumbnail: String,
+    selected: Boolean
   }
+  /** shortcut, no validation:
+   * props:['index', 'name', 'thumbnail', 'selected']
+   * **/
+  /** expanded, defaults and required fields
+   *  props: {
+   *    index: {
+   *      type: Number,
+   *      required: true,
+   *      default: 0
+   *    }
+   *    name: String,
+   *    thumbnail: String,
+   *    selected: Boolean
+   *  }
+   * **/
 }
 </script>
 

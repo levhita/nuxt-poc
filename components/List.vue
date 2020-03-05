@@ -17,11 +17,7 @@
     </div>
 
     <div>
-      <User
-        v-for="user in usersFiltered"
-        :key="user.index"
-        :selected="user.selected"
-      />
+      <User v-for="user in usersFiltered" :key="user.index" v-bind="user" />
     </div>
   </section>
 </template>
