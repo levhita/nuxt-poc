@@ -10,14 +10,18 @@
     <div class="filter">
       Select group of users:
       <select>
-        <option v-for="option in options" :key="option" :value="option">{{
-          option
+        <option v-for="group in groups" :key="group" :value="group">{{
+          group
         }}</option>
       </select>
     </div>
 
     <div>
-      <User v-for="user in users" :key="user.index" :selected="user.selected" />
+      <User
+        v-for="user in usersFiltered"
+        :key="user.index"
+        :selected="user.selected"
+      />
     </div>
   </section>
 </template>
@@ -31,12 +35,39 @@ export default {
   },
   data() {
     return {
-      options: ['hi', 'oh', 'hu'],
+      groups: ['Administrative', 'Student', 'Teacher'],
+      selectedGroup: 'Administrative',
       users: [
-        { index: 0, selected: false, name: 'Levhita' },
-        { index: 1, selected: false, name: 'Anais' },
-        { index: 2, selected: false, name: 'Rocio' }
+        {
+          index: 0,
+          selected: false,
+          name: 'Levhita',
+          group: 'Administrative',
+          thumbnail:
+            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+        },
+        {
+          index: 1,
+          selected: false,
+          name: 'Anais',
+          group: 'Administrative',
+          thumbnail:
+            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+        },
+        {
+          index: 2,
+          selected: false,
+          name: 'Rocio',
+          group: 'Student',
+          thumbnail:
+            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+        }
       ]
+    }
+  },
+  computed: {
+    usersFiltered() {
+      return this.users.filter((user) => user.group === this.selectedGroup)
     }
   }
 }

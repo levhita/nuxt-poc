@@ -14,15 +14,16 @@ export default {
     List
   },
   data() {
-    return {
-      message: 'Hello World'
-    }
+    return {}
   }
 }
 </script>
 
 <style>
-h1 {
-  color: red;
+body {
+  font-size: 18px;
+  font-family: Helvetica, Arial, sans-serif;
+  /*iPad width, we need a design update for anything < 768px */
+  min-width: 768px;
 }
 </style>

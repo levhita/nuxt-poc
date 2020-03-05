@@ -1,12 +1,24 @@
 <template>
-  <h2>Hi</h2>
+  <div>
+    <button :class="isSelectedClass">
+      <img :src="thumbnail" /> {{ name }}
+    </button>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      name: 'levhita'
+      name: 'levhita',
+      thumbnail:
+        'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg',
+      selected: true
+    }
+  },
+  computed: {
+    isSelectedClass() {
+      return this.selected || 'selected'
     }
   }
 }
