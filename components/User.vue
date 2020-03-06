@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <button :class="{ selected: isSelected }" @click="handleClick">
-      <img :src="thumbnail" /> {{ name }}
+      <img :src="picture.thumbnail" /> {{ name }}
     </button>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
   props: {
     index: Number,
     name: String,
-    thumbnail: String,
+    picture: Object,
     isSelected: Boolean
   },
   methods: {

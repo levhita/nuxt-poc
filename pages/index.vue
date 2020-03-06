@@ -1,80 +1,75 @@
 <template>
   <div>
-    <Details v-bind="selectedUser" />
+    <Details v-if="selectedUser" v-bind="selectedUser" />
     <List :users="users" :groups="groups" @send-user-click="handleUserClick" />
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import Details from '../components/Details'
 import List from '../components/List'
+
+const groups = ['Student', 'Teacher', 'Administrative']
+const professions = [
+  'Accountant',
+  'Actor',
+  'Actress',
+  'Air Traffic Controller',
+  'Architect',
+  'Artist',
+  'Attorney',
+  'Banker',
+  'Bartender',
+  'Barber',
+  'Bookkeeper',
+  'Builder',
+  'Businessman'
+]
+
 export default {
   components: {
     Details,
     List
   },
-  data() {
-    const users = [
-      {
-        index: 0,
-        isSelected: true,
-        name: 'Levhita',
-        group: 'Administrative',
-        bio: 'web developer and free software advocate',
-        picture: {
-          large:
-            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_400x400.jpg'
-        },
-        profession: 'Full Stack Developer',
-        email: 'levhita@gmail.com',
-        phone: '33-1139-38-63',
-        thumbnail:
-          'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
-      },
-      {
-        index: 1,
-        isSelected: false,
-        name: 'Anais',
-        group: 'Teacher',
-        bio: 'tatoos and feminism',
-        picture: {
-          large:
-            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_400x400.jpg'
-        },
-        profession: 'Frontend Developer',
-        email: 'anais@gmail.com',
-        phone: '33-1139-38-63',
-        thumbnail:
-          'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
-      },
-      {
-        index: 2,
-        isSelected: false,
-        name: 'Rocio',
-        group: 'Student',
-        bio: "I'll find your errors and make you pay",
-        picture: {
-          large:
-            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_400x400.jpg'
-        },
-        profession: 'QA',
-        email: 'rocio@gmail.com',
-        phone: '33-1139-38-63',
-        thumbnail:
-          'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
-      }
-    ]
+  asyncData(context) {
+    return axios
+      .get(
+        'https://randomuser.me/api/?seed=Levhita&results=50&inc=name,phone,email,picture'
+      )
+      .then((res) => {
+        const users = res.data.results.map((e, index) => {
+          return {
+            name: `${e.name.first} ${e.name.last}`,
+            group: groups[Math.floor(Math.random() * groups.length)],
+            bio:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            profession: professions[Math.floor(Math.random() * groups.length)],
+            email: e.email,
+            phone: e.phone,
+            picture: e.picture,
+            index,
+            selected: false
+          }
+        })
+        users[0].isSelected = true
+        const selectedUser = users[0]
 
+        return { users, selectedUser }
+      })
+  },
+  data() {
     return {
-      groups: ['Administrative', 'Student', 'Teacher'],
-      selectedUser: users[0],
-      users
+      groups,
+      selectedUser: null,
+      users: []
     }
   },
   methods: {
     handleUserClick(index) {
       this.users.forEach((user) => (user.isSelected = false))
       this.users[index].isSelected = true
+      this.users = [...this.users]
       this.selectedUser = this.users[index]
     }
   }

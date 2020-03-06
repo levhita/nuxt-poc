@@ -45,9 +45,10 @@ section.details {
   float: right;
   border-left: 1px solid gray;
   padding: 0;
+
   > div.intro {
     text-align: center;
-    color: gray;
+    color: white;
     padding: 0;
     height: 300px;
     overflow: hidden;
