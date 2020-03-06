@@ -1,7 +1,7 @@
 <template>
   <div>
     <Details v-bind="selectedUser" />
-    <List :users="users" :groups="groups" />
+    <List :users="users" :groups="groups" @send-user-click="handleUserClick" />
   </div>
 </template>
 
@@ -14,50 +14,66 @@ export default {
     List
   },
   data() {
-    return {
-      groups: ['Administrative', 'Student', 'Teacher'],
-      selectedUser: {
+    const users = [
+      {
         index: 0,
         selected: true,
         name: 'Levhita',
         group: 'Administrative',
-        bio: 'Web developer a free software advocate',
+        bio: 'web developer and free software advocate',
         picture: {
           large:
             'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_400x400.jpg'
         },
-        profession: 'Developer',
+        profession: 'Full Stack Developer',
         email: 'levhita@gmail.com',
         phone: '33-1139-38-63',
         thumbnail:
           'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
       },
-      users: [
-        {
-          index: 0,
-          selected: true,
-          name: 'Levhita',
-          group: 'Administrative',
-          thumbnail:
-            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+      {
+        index: 1,
+        selected: false,
+        name: 'Anais',
+        group: 'Teacher',
+        bio: 'tatoos and feminism',
+        picture: {
+          large:
+            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_400x400.jpg'
         },
-        {
-          index: 1,
-          selected: false,
-          name: 'Anais',
-          group: 'Administrative',
-          thumbnail:
-            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+        profession: 'Frontend Developer',
+        email: 'anais@gmail.com',
+        phone: '33-1139-38-63',
+        thumbnail:
+          'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+      },
+      {
+        index: 2,
+        selected: false,
+        name: 'Rocio',
+        group: 'Student',
+        bio: "I'll find your errors and make you pay",
+        picture: {
+          large:
+            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_400x400.jpg'
         },
-        {
-          index: 2,
-          selected: false,
-          name: 'Rocio',
-          group: 'Student',
-          thumbnail:
-            'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
-        }
-      ]
+        profession: 'QA',
+        email: 'rocio@gmail.com',
+        phone: '33-1139-38-63',
+        thumbnail:
+          'https://pbs.twimg.com/profile_images/1214948725359071234/Bm4T4-cg_bigger.jpg'
+      }
+    ]
+
+    return {
+      groups: ['Administrative', 'Student', 'Teacher'],
+      selectedUser: users[0],
+      users
+    }
+  },
+  methods: {
+    handleUserClick(index) {
+      this.selectedUser = this.users[index]
     }
   }
 }

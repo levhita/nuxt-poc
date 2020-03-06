@@ -1,18 +1,13 @@
 <template>
   <div class="user">
-    <button :class="{ selected }"><img :src="thumbnail" /> {{ name }}</button>
+    <button class="{ selected }" @click="handleClick">
+      <img :src="thumbnail" /> {{ name }}
+    </button>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    index: Number,
-    name: String,
-    thumbnail: String,
-    selected: Boolean
-  }
-
   /** shortcut, no validation:
    * props:['index', 'name', 'thumbnail', 'selected']
    * **/
@@ -29,6 +24,17 @@ export default {
    *    selected: Boolean
    *  }
    * **/
+  props: {
+    index: Number,
+    name: String,
+    thumbnail: String,
+    selected: Boolean
+  },
+  methods: {
+    handleClick() {
+      this.$emit('send-click', this.index)
+    }
+  }
 }
 </script>
 

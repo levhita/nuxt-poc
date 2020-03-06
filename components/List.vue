@@ -9,7 +9,7 @@
 
     <div class="filter">
       Select group of users:
-      <select>
+      <select @change="handleGroupSelection">
         <option v-for="group in groups" :key="group" :value="group">{{
           group
         }}</option>
@@ -17,7 +17,12 @@
     </div>
 
     <div class="users">
-      <User v-for="user in usersFiltered" :key="user.index" v-bind="user" />
+      <User
+        v-for="user in usersFiltered"
+        :key="user.index"
+        v-bind="user"
+        @send-click="handleUserClick"
+      />
     </div>
   </section>
 </template>
@@ -41,6 +46,14 @@ export default {
   computed: {
     usersFiltered() {
       return this.users.filter((user) => user.group === this.selectedGroup)
+    }
+  },
+  methods: {
+    handleGroupSelection(event) {
+      this.selectedGroup = event.target.value
+    },
+    handleUserClick(index) {
+      this.$emit('send-user-click', index)
     }
   }
 }
