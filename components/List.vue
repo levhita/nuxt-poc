@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="list">
     <h1>Users</h1>
 
     <p>
@@ -16,7 +16,7 @@
       </select>
     </div>
 
-    <div>
+    <div class="users">
       <User v-for="user in usersFiltered" :key="user.index" v-bind="user" />
     </div>
   </section>
@@ -47,7 +47,19 @@ export default {
 </script>
 
 <style>
-select {
+.list > h1 {
+  color: dimgray;
+}
+.list p {
+  color: gray;
+}
+
+section.list {
+  margin-right: 400px;
+  padding: 30px;
+}
+
+.list > .filter > select {
   margin-left: 30px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -67,19 +79,9 @@ select {
   background-size: 5px 5px, 5px 5px, 1px 1.5em;
   background-repeat: no-repeat;
 }
-h1 {
-  color: dimgray;
-}
-p {
-  color: gray;
-}
-div.filter {
+.list > .filter {
   color: dimgray;
   font-weight: bold;
   margin-bottom: 30px;
-}
-section {
-  margin-right: 400px;
-  padding: 30px;
 }
 </style>

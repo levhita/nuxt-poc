@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="user">
     <button :class="{ selected }"><img :src="thumbnail" /> {{ name }}</button>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style>
-div {
+div.user {
   box-sizing: border-box;
   display: block;
   width: 40%;
@@ -42,7 +42,7 @@ div {
   width: 250px;
   float: left;
 }
-button {
+div.user > button {
   font-size: 18px;
   width: 250px;
   height: 50px;
@@ -55,22 +55,22 @@ button {
   padding: 12px 0px;
 }
 
-button.selected {
+div.user > button.selected {
   border: 1px solid grey;
   background: #eee;
 }
 
-button:hover {
+div.user > button:hover {
   border: 1px solid dimgrey;
   cursor: pointer;
   background: #ddd;
 }
 
-span {
+div.user > button > span {
   display: inline-block;
   vertical-align: middle;
 }
-img {
+div.user > button > img {
   float: left;
   border-radius: 50%;
   margin: -12px 15px -12px 0px;

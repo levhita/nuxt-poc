@@ -1,11 +1,12 @@
 <template>
-  <section class="details-container">
+  <section class="details">
     <div class="intro">
       <div class="back" :style="{ backgroundImage: `url(${picture.large})` }" />
       <img class="detail" :src="picture.large" />
       <h1>{{ name }}</h1>
       <p>{{ group }}</p>
     </div>
+
     <div class="details">
       <dl>
         <dt>Short Bio</dt>
@@ -36,29 +37,31 @@ export default {
 </script>
 
 <style>
-/** this should be up, or maybe vue also has the host concept **/
-.details-container {
-  position: relative;
-  box-sizing: border-box;
-  border-left: 1px solid grey;
-  overflow: hidden;
+section.details {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 400px;
+  float: right;
+  border-left: 1px solid gray;
+  padding: 0;
 }
 
-div.intro {
+section.details > div.intro {
   text-align: center;
   color: gray;
   padding: 0;
   height: 300px;
   overflow: hidden;
 }
-div.intro > h1 {
+section.details > div.intro > h1 {
   font-size: 22px;
 }
-div.intro > p {
+section.details > div.intro > p {
   font-size: 18px;
 }
 
-div.back {
+section.details > div.intro > div.back {
   position: absolute;
   height: 330px;
   width: 100%;
@@ -71,27 +74,27 @@ div.back {
   z-index: -1;
 }
 
-img.detail {
-  border: 4px solid gray;
+section.details img.detail {
+  border: 4px solid white;
   border-radius: 50%;
   margin-top: 40px;
   margin-bottom: 20px;
 }
 
-div.details {
+section.details > div.details {
   background: white;
   padding: 5px;
 }
-dl {
+section.details > div.intro > dl {
   padding: 0;
   margin: 0;
   margin: 1em;
 }
-dt {
+section.details > div.intro > dt {
   color: gray;
   font-size: 14px;
 }
-dd {
+section.details > div.intro > dd {
   margin: 10px 0 30px 0;
   color: #222;
 }
