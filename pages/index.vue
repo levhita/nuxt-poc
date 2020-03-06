@@ -18,7 +18,7 @@ export default {
       groups: ['Administrative', 'Student', 'Teacher'],
       selectedUser: {
         index: 0,
-        selected: false,
+        selected: true,
         name: 'Levhita',
         group: 'Administrative',
         bio: 'Web developer a free software advocate',
@@ -35,7 +35,7 @@ export default {
       users: [
         {
           index: 0,
-          selected: false,
+          selected: true,
           name: 'Levhita',
           group: 'Administrative',
           thumbnail:

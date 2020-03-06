@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 div.user {
   box-sizing: border-box;
   display: block;
@@ -41,38 +41,37 @@ div.user {
   margin: 20px 20px;
   width: 250px;
   float: left;
-}
-div.user > button {
-  font-size: 18px;
-  width: 250px;
-  height: 50px;
-  border: none;
-  box-sizing: border-box;
-  border-radius: 24px;
-  background: white;
-  display: inline-block;
-  text-align: left;
-  padding: 12px 0px;
-}
 
-div.user > button.selected {
-  border: 1px solid grey;
-  background: #eee;
-}
+  > button {
+    font-size: 18px;
+    width: 250px;
+    height: 50px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 24px;
+    background: white;
+    display: inline-block;
+    text-align: left;
+    padding: 12px 0px;
 
-div.user > button:hover {
-  border: 1px solid dimgrey;
-  cursor: pointer;
-  background: #ddd;
-}
-
-div.user > button > span {
-  display: inline-block;
-  vertical-align: middle;
-}
-div.user > button > img {
-  float: left;
-  border-radius: 50%;
-  margin: -12px 15px -12px 0px;
+    &.selected {
+      border: 1px solid grey;
+      background: #eee;
+    }
+    &:hover {
+      border: 1px solid dimgrey;
+      cursor: pointer;
+      background: #ddd;
+    }
+    > span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    > img {
+      float: left;
+      border-radius: 50%;
+      margin: -12px 15px -12px 0px;
+    }
+  }
 }
 </style>
