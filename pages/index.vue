@@ -17,7 +17,7 @@ export default {
     const users = [
       {
         index: 0,
-        selected: true,
+        isSelected: true,
         name: 'Levhita',
         group: 'Administrative',
         bio: 'web developer and free software advocate',
@@ -33,7 +33,7 @@ export default {
       },
       {
         index: 1,
-        selected: false,
+        isSelected: false,
         name: 'Anais',
         group: 'Teacher',
         bio: 'tatoos and feminism',
@@ -49,7 +49,7 @@ export default {
       },
       {
         index: 2,
-        selected: false,
+        isSelected: false,
         name: 'Rocio',
         group: 'Student',
         bio: "I'll find your errors and make you pay",
@@ -73,6 +73,8 @@ export default {
   },
   methods: {
     handleUserClick(index) {
+      this.users.forEach((user) => (user.isSelected = false))
+      this.users[index].isSelected = true
       this.selectedUser = this.users[index]
     }
   }

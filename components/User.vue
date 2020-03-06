@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <button class="{ selected }" @click="handleClick">
+    <button :class="{ selected: isSelected }" @click="handleClick">
       <img :src="thumbnail" /> {{ name }}
     </button>
   </div>
@@ -9,7 +9,7 @@
 <script>
 export default {
   /** shortcut, no validation:
-   * props:['index', 'name', 'thumbnail', 'selected']
+   * props:['index', 'name', 'thumbnail', 'isSelected']
    * **/
 
   /** expanded, defaults and required fields
@@ -21,14 +21,14 @@ export default {
    *    }
    *    name: String,
    *    thumbnail: String,
-   *    selected: Boolean
+   *    isSelected: Boolean
    *  }
    * **/
   props: {
     index: Number,
     name: String,
     thumbnail: String,
-    selected: Boolean
+    isSelected: Boolean
   },
   methods: {
     handleClick() {
