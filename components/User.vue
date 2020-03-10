@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$emit('send-click', this.index)
+      this.$store.commit('selectUser', this.index)
     }
   }
 }

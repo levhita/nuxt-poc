@@ -17,12 +17,7 @@
     </div>
 
     <div class="users">
-      <User
-        v-for="user in usersFiltered"
-        :key="user.index"
-        v-bind="user"
-        @send-click="handleUserClick"
-      />
+      <User v-for="user in users" :key="user.index" v-bind="user" />
     </div>
   </section>
 </template>
@@ -34,26 +29,23 @@ export default {
   components: {
     User
   },
-  props: {
-    users: Array,
-    groups: Array
-  },
   data() {
     return {
       selectedGroup: 'Administrative'
     }
   },
   computed: {
-    usersFiltered() {
-      return this.users.filter((user) => user.group === this.selectedGroup)
+    groups() {
+      return this.$store.state.groups
+    },
+    users() {
+      const users = this.$store.state.users || []
+      return users.filter((user) => user.group === this.selectedGroup)
     }
   },
   methods: {
     handleGroupSelection(event) {
       this.selectedGroup = event.target.value
-    },
-    handleUserClick(index) {
-      this.$emit('send-user-click', index)
     }
   }
 }
